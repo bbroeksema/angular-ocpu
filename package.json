@@ -1,0 +1,41 @@
+{
+  "name": "angular-ocpu",
+  "description": "Angular ocpu - AngularJS service for OpenCPU",
+  "version": "0.1.0",
+  "keywords": [
+    "angular",
+    "opencpu"
+  ],
+  "homepage": "http://bbroeksema.github.io/angular-ocpu",
+  "bugs": "https://github.com/bbroeksema/angular-ocpu/issues",
+  "author": {
+    "name": "Bertjan Broeksema",
+    "email": "dev@broeksemaatjes.nl",
+    "url": "https://github.com/bbroeksema"
+  },
+  "contributors": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bbroeksema/angular-ocpu.git"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/mgcrea/angular-strap/blob/master/LICENSE.md"
+    }
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "~3.8.10",
+    "run-sequence": "~1.0.2",
+    "gulp-clean": "~0.3.1",
+    "gulp-sourcemaps": "~1.2.8",
+    "gulp-ng-annotate": "~0.4.3",
+    "gulp-concat-util": "~0.5.1",
+    "path": "~0.4.9",
+    "gulp-util": "~3.0.1",
+    "gulp-rename": "~1.2.0",
+    "gulp-uglify": "~1.0.2",
+    "merge-stream": "~0.1.6"
+  }
+}
