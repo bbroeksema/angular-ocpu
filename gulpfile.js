@@ -40,33 +40,17 @@ var banner = gutil.template('/**\n' +
   ' */\n', {file: '', pkg: pkg, today: new Date().toISOString().substr(0, 10)});
 
 gulp.task('scripts:dist', function() {
-
-  merge(
-    gulp.src([src.index, src.scripts], { cwd: src.cwd })
-      .pipe(sourcemaps.init())
-      .pipe(ngAnnotate())
-      .pipe(concat(pkg.name + '.js', { process: function(src) { return '// Source: ' + path.basename(this.path) + '\n' + (src.trim() + '\n').replace(/(^|\n)[ \t]*('use strict'|"use strict");?\s*/g, '$1'); }}))
-      .pipe(concat.header('(function(window, document, undefined) {\n\'use strict\';\n'))
-      .pipe(concat.footer('\n})(window, document);\n'))
-      .pipe(concat.header(banner))
-      .pipe(gulp.dest(src.dist))
-      .pipe(rename(function(path) { path.extname = '.min.js'; }))
-      .pipe(uglify())
-      .pipe(concat.header(banner))
-      .pipe(sourcemaps.write('./'))
-      .pipe(gulp.dest(src.dist)),
-
-    // Build individual modules
-    gulp.src(src.scripts, { cwd: src.cwd })
-      .pipe(sourcemaps.init())
-      .pipe(ngAnnotate())
-      .pipe(rename(function(path){ path.dirname = ''; })) // flatten
-      .pipe(concat.header(banner))
-      .pipe(gulp.dest(path.join(src.dist, 'modules')))
-      .pipe(rename(function(path) { path.extname = '.min.js'; }))
-      .pipe(uglify())
-      .pipe(concat.header(banner))
-      .pipe(sourcemaps.write('./'))
-      .pipe(gulp.dest(path.join(src.dist, 'modules')))
-  );
+  gulp.src([src.index, src.scripts], { cwd: src.cwd })
+    .pipe(sourcemaps.init())
+    .pipe(ngAnnotate())
+    .pipe(concat(pkg.name + '.js', { process: function(src) { return '// Source: ' + path.basename(this.path) + '\n' + (src.trim() + '\n').replace(/(^|\n)[ \t]*('use strict'|"use strict");?\s*/g, '$1'); }}))
+    .pipe(concat.header('(function(window, document, undefined) {\n\'use strict\';\n'))
+    .pipe(concat.footer('\n})(window, document);\n'))
+    .pipe(concat.header(banner))
+    .pipe(gulp.dest(src.dist))
+    .pipe(rename(function(path) { path.extname = '.min.js'; }))
+    .pipe(uglify())
+    .pipe(concat.header(banner))
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest(src.dist));
 });
